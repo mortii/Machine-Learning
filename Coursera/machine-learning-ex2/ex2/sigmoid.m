@@ -12,7 +12,7 @@ g = zeros(size(z));
 
 for row = 1:rows
     for column = 1:columns
-        g(column, row) = 1/(1 + exp(-z(column, row)));
+        g(row, column) = 1/(1 + exp(-z(row, column)));
     end
 end
 

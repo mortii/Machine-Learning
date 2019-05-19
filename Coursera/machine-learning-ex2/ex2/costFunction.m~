@@ -32,24 +32,6 @@ grad = gradient(theta, X, y, m);
 
 end
 
-function c = cost(theta, X, y)
-m = length(X);
-sum = 0;
-for row = 1:m
-    y_value = y(row);
-    expected_x = hyp(theta, X(row,:));
-    
-    sum = sum + -y_value * log(expected_x) - (1 - y_value) * log(1 - expected_x);
-end
-c = 1/m * sum;
-end
-
-function h = hyp(theta, x)
-%fprintf('size of theta: m:%d, n:%d \n', size(theta));
-%fprintf('size of x: m:%d, n:%d \n', size(x));
-h = sigmoid((theta'*x'));
-end
-
 function g = gradient(theta, X, y, m)
 grad = zeros(size(theta));
 [grad_rows,grad_columns] = size(grad);
@@ -80,4 +62,20 @@ end
 g = grad;
 end
 
+function c = cost(theta, X, y)
+m = length(X);
+sum = 0;
+for row = 1:m
+    y_value = y(row);
+    expected_x = hyp(theta, X(row,:));
+    
+    sum = -y_value * log(expected_x) - (1 - y_value) * log(1 - expected_x);
+end
+c = 1/m * sum;
+end
 
+function h = hyp(theta, x)
+%fprintf('size of theta: m:%d, n:%d \n', size(theta));
+%fprintf('size of x: m:%d, n:%d \n', size(x));
+h = sigmoid((theta'*x'));
+end

@@ -21,19 +21,16 @@ for row = 1:m
     prediction = hyp(theta, X(row,:));
     
     if prediction >= 0.5
-        p(row) = 1;
+        
     else
-        p(row) = 0;
+        
     end
+    p(row) = hyp(theta, X(row,:));
 end
 
-p;
+
 
 % =========================================================================
 
 
-end
-
-function h = hyp(theta, x)
-h = sigmoid((theta'*x'));
 end
